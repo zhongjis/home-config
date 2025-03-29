@@ -1,6 +1,6 @@
 repositories:
-  - name: longhorn
-    url: https://charts.longhorn.io
+  # - name: longhorn
+  #   url: https://charts.longhorn.io
   - name: metallb
     url: https://metallb.github.io/metallb
   - name: mojo2600
@@ -12,10 +12,10 @@ repositories:
 ---
 releases:
   # Distributed storage
-  - name: longhorn
-    namespace: longhorn-system
-    chart: longhorn/longhorn
-    version: 1.6.2
+  # - name: longhorn
+  #   namespace: longhorn-system
+  #   chart: longhorn/longhorn
+  #   version: 1.6.2
 
   # Load balancer
   - name: metallb
