@@ -12,13 +12,13 @@ ingress:
     kubernetes.io/ingress.class: "nginx-internal"
 
 serviceWeb:
-  loadBalancerIP: 192.168.50.128
+  loadBalancerIP: 192.168.50.130
   annotations:
     metallb.universe.tf/allow-shared-ip: pihole-svc
   type: LoadBalancer
 
 serviceDns:
-  loadBalancerIP: 192.168.50.128
+  loadBalancerIP: 192.168.50.130
   annotations:
     metallb.universe.tf/allow-shared-ip: pihole-svc
   type: LoadBalancer
