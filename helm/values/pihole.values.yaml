@@ -2,7 +2,6 @@
 DNS1: 192.168.50.1
 persistentVolumeClaim:
   enabled: true
-  size: 1Gi
 
 ingress:
   enabled: true
