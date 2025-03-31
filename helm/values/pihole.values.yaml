@@ -8,6 +8,8 @@ ingress:
   ingressClassName: nginx-internal
   hosts:
     - "pihole.home"
+  annotations:
+    kubernetes.io/ingress.class: "nginx-internal"
 
 serviceWeb:
   loadBalancerIP: 192.168.50.130
