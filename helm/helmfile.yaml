@@ -15,14 +15,6 @@ releases:
     namespace: metallb-system
     version: 0.14.9
 
-  # pihole
-  - name: pihole
-    namespace: pihole-system
-    chart: mojo2600/pihole
-    version: 2.29.1
-    values:
-      - ./values/pihole.values.yaml
-
   # Ingress for local network
   - name: ingress-nginx-internal
     namespace: nginx-system
@@ -31,10 +23,18 @@ releases:
     values:
       - ./values/nginx-internal.values.yaml
 
+  # pihole
+  - name: pihole
+    namespace: pihole-system
+    chart: mojo2600/pihole
+    version: 2.18.0
+    values:
+      - ./values/pihole.values.yaml
+
   # Automatic DNS for pihole
   - name: externaldns-pihole
     namespace: pihole-system
     chart: bitnami/external-dns
-    version: 8.7.8
+    version: 8.0.1
     values:
       - ./values/externaldns.values.yaml
