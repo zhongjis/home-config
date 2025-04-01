@@ -7,6 +7,8 @@ repositories:
     url: https://kubernetes.github.io/ingress-nginx
   - name: bitnami
     url: https://charts.bitnami.com/bitnami
+  - name: csi-driver-nfs
+    url: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
 ---
 releases:
   # Load balancer
@@ -38,3 +40,8 @@ releases:
     version: 8.0.1
     values:
       - ./values/externaldns.values.yaml
+
+  - name: csi-driver-nfs
+    namespace: kube-system
+    chart: csi-driver-nfs/csi-driver-nfs
+    version: 4.11.0
