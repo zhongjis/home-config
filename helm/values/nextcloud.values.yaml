@@ -1,6 +1,6 @@
 ## Nextcloud configuration
 nextcloud:
-  host: nextcloud.local
+  host: nextcloud.home
   username: admin
   password: admin-password
   update: 0
@@ -9,26 +9,25 @@ nextcloud:
 ## Persistence configuration
 persistence:
   enabled: true
-  existingClaim: ""
-  storageClass: "nfs-storage"
+  # existingClaim: ""
+  storageClass: "nas-nextcloud"
   accessMode: ReadWriteMany
-  size: 20Gi
+  size: 495Gi
 
-## NFS connection details
-nfs:
-  server: 192.168.50.102
-  path: /
-  mountOptions:
-    - nfsvers=4.1
-    - hard
+  nextcloudData:
+    enabled: true
+    storageClass: "nas-nextcloud"
+    accessMode: ReadWriteMany
+    size: 5Gi
 
 ## Ingress configuration
 ingress:
   enabled: true
+  className: nginx-internal
   annotations:
-    kubernetes.io/ingress.class: nginx
-  path: /
-  tls: []
+    kubernetes.io/ingress.class: nginx-internal
+  hosts:
+    - "nextcloud.home"
 
 ## Resource limits
 resources:
@@ -51,4 +50,3 @@ mariadb:
       storageClass: "nfs-storage"
       accessMode: ReadWriteOnce
       size: 10Gi
-

@@ -47,11 +47,11 @@ releases:
     namespace: kube-system
     chart: csi-driver-nfs/csi-driver-nfs
     version: 4.11.0
-    
-  # Nextcloud with NFS storage  
+
+  # Nextcloud with NFS storage
   - name: nextcloud
     namespace: nextcloud
     chart: nextcloud/nextcloud
-    version: 3.3.6
+    version: 6.6.9
     values:
       - ./values/nextcloud.values.yaml
