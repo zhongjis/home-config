@@ -47,6 +47,6 @@ mariadb:
   primary:
     persistence:
       enabled: true
-      storageClass: "nfs-storage"
+      storageClass: "nas-nextcloud"
       accessMode: ReadWriteOnce
       size: 10Gi

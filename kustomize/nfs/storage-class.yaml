@@ -6,7 +6,7 @@ provisioner: nfs.csi.k8s.io
 parameters:
   server: 192.168.50.102
   share: /mnt/zimablade-rack-pool/nextcloud
-  csi.storage.k8s.io/provisioner-secret-name: truenas-kube
+  csi.storage.k8s.io/provisioner-secret-name: truenas-nextcloud
   csi.storage.k8s.io/provisioner-secret-namespace: kube-system
 
 mountOptions:
