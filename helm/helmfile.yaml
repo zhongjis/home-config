@@ -9,6 +9,8 @@ repositories:
     url: https://charts.bitnami.com/bitnami
   - name: csi-driver-nfs
     url: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+  - name: nextcloud
+    url: https://nextcloud.github.io/helm/
 ---
 releases:
   # Load balancer
@@ -45,3 +47,11 @@ releases:
     namespace: kube-system
     chart: csi-driver-nfs/csi-driver-nfs
     version: 4.11.0
+    
+  # Nextcloud with NFS storage  
+  - name: nextcloud
+    namespace: nextcloud
+    chart: nextcloud/nextcloud
+    version: 3.3.6
+    values:
+      - ./values/nextcloud.values.yaml
