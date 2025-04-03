@@ -5,5 +5,3 @@ labels:
       app.kubernetes.io/managed-by: Kustomize
 resources:
   - ./metallb/pool.yaml
-  - ./nfs/storage-class.yaml
-  - ./nfs/secret.yaml
