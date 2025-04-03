@@ -55,6 +55,7 @@ releases:
     namespace: nextcloud
     chart: nextcloud/nextcloud
     version: 6.6.9
+    installed: false
     values:
       - ./values/nextcloud.values.yaml
     needs:

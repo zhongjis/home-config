@@ -12,7 +12,7 @@ persistence:
   # existingClaim: ""
   storageClass: "nas-apps-nextcloud-nfs"
   accessMode: ReadWriteMany
-  size: 495Gi
+  size: 256Gi
 
   nextcloudData:
     enabled: true
