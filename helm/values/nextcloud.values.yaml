@@ -16,7 +16,7 @@ persistence:
 
   nextcloudData:
     enabled: true
-    storageClass: nas-apps-nextcloud-nfs
+    storageClass: "nas-apps-nextcloud-nfs"
     accessMode: ReadWriteMany
     size: 5Gi
 
@@ -47,6 +47,6 @@ mariadb:
   primary:
     persistence:
       enabled: true
-      storageClass: nas-apps-nextcloud-nfs
+      storageClass: "nas-apps-nextcloud-nfs"
       accessMode: ReadWriteOnce
       size: 10Gi
