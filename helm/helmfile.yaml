@@ -47,7 +47,6 @@ releases:
     namespace: storage
     createNamespace: true
     chart: democratic-csi/democratic-csi
-    installed: false
     values:
       - ./values/democratic-csi-nfs.yaml
 
@@ -56,7 +55,6 @@ releases:
     namespace: nextcloud
     chart: nextcloud/nextcloud
     version: 6.6.9
-    installed: false
     values:
       - ./values/nextcloud.values.yaml
     needs:
