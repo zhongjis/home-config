@@ -60,4 +60,4 @@ releases:
     values:
       - ./values/nextcloud.values.yaml
     needs:
-      - democratic-csi-nfs
+      - storage/democratic-csi-nfs
