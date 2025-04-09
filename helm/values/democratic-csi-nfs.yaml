@@ -2,8 +2,8 @@ csiDriver:
   name: "nfs"
 
 storageClasses:
-  - name: nas-apps-nextcloud-nfs
-    defaultClass: false
+  - name: truenas-nfs
+    defaultClass: true
     reclaimPolicy: Retain
     volumeBindingMode: Immediate
     allowVolumeExpansion: true
@@ -12,7 +12,7 @@ storageClasses:
       detachedVolumesFromSnapshots: "false"
     mountOptions:
       - noatime
-      - nfsvers=3
+      - nfsvers=4
     secrets:
       provisioner-secret:
       controller-publish-secret:
@@ -26,23 +26,24 @@ driver:
     instance_id:
     httpConnection:
       protocol: http
-      host: 192.168.50.102
+      host: 192.168.50.30
       port: 80
       username: root # Use your FreeNAS admin username
-      password: "1234" # Or use privateKey instead
+      # TODO: replace this
+      apiKey:
       allowInsecure: true
+      apiVersion: 2
     sshConnection: # Add this section
-      host: 192.168.50.102
+      host: 192.168.50.30
       port: 22
-      username: root # Use your FreeNAS admin username
-      password: "1234" # Or use privateKey instead
-      # privateKey: |       # Alternative to password
-      #   -----BEGIN RSA PRIVATE KEY-----
-      #   Your private key content here
-      #   -----END RSA PRIVATE KEY-----
+      username: root
+      # TODO: ssh-keygen -t rsa -C root@truenas.home -f truenas_rsa
+      privateKey: |
+        -----BEGIN OPENSSH PRIVATE KEY-----
+        -----END OPENSSH PRIVATE KEY-----
     zfs:
-      datasetParentName: zimablade-rack-pool/nextcloud/nfs/v
-      detachedSnapshotsDatasetParentName: zimablade-rack-pool/nextcloud/nextcloud/nfs/s
+      datasetParentName: zimablade-rack-pool/kube/nfs/v
+      detachedSnapshotsDatasetParentName: zimablade-rack-pool/kube/nfs/s
       datasetEnableQuotas: true
       datasetEnableReservation: false
       datasetPermissionsMode: "0777"
@@ -50,7 +51,7 @@ driver:
       datasetPermissionsGroup: 0
     nfs:
       #shareCommentTemplate: "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}-{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
-      shareHost: 192.168.50.102
+      shareHost: 192.168.50.30
       shareAlldirs: false
       shareAllowedHosts: []
       shareAllowedNetworks: []
