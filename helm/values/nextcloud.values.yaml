@@ -10,7 +10,7 @@ image:
   flavor: fpm
   tag: 31.0.2-fpm-alpine
   # NOTE: set after working
-  # pullPolicy: IfNotPresent
+  pullPolicy: IfNotPresent
 
 ## Persistence configuration
 persistence:
@@ -35,6 +35,12 @@ ingress:
   hosts:
     - "nextcloud.home"
 
+service:
+  loadBalancerIP: 192.168.50.130
+  annotations:
+    metallb.universe.tf/allow-shared-ip: pihole-svc
+  type: LoadBalancer
+
 ## Resource limits
 resources:
   limits:
@@ -56,14 +62,13 @@ mariadb:
       storageClass: truenas-nfs
       accessMode: ReadWriteOnce
       size: 10Gi
-
-# NOTE: disable them first. after init then enable
+# NOTE: uncomment after first setup.
 # https://github.com/nextcloud/helm/issues/259#issuecomment-1203159235
-cronjob:
-  enabled: false
-livenessProbe:
-  enabled: false
-readinessProbe:
-  enabled: false
-startupProbe:
-  enabled: false
+# cronjob:
+#   enabled: false
+# livenessProbe:
+#   enabled: false
+# readinessProbe:
+#   enabled: false
+# startupProbe:
+#   enabled: false
