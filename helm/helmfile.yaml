@@ -11,8 +11,6 @@ repositories:
     url: https://democratic-csi.github.io/charts/
   - name: nextcloud
     url: https://nextcloud.github.io/helm/
-  - name: owncloud
-    url: https://owncloud-docker.github.io/helm-charts
 ---
 releases:
   # Load balancer
@@ -57,6 +55,7 @@ releases:
     namespace: nextcloud
     chart: nextcloud/nextcloud
     version: 6.6.9
+    installed: false
     values:
       - ./values/nextcloud.values.yaml
     needs:
