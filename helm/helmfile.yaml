@@ -61,13 +61,3 @@ releases:
       - ./values/nextcloud.values.yaml
     needs:
       - storage/democratic-csi-nfs
-
-  # OwnCloudInfiniteScale with NFS storage
-  - name: owncloud
-    namespace: owncloud
-    chart: owncloud/owncloud
-    version: 0.8.0
-    values:
-      - ./values/owncloud.values.yaml
-    needs:
-      - storage/democratic-csi-nfs
