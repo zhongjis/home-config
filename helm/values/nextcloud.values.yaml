@@ -6,6 +6,12 @@ nextcloud:
   update: 0
   datadir: /var/www/html/data
 
+image:
+  flavor: fpm
+  tag: 31.0.2-fpm-alpine
+  # NOTE: set after working
+  # pullPolicy: IfNotPresent
+
 ## Persistence configuration
 persistence:
   enabled: true
@@ -50,3 +56,14 @@ mariadb:
       storageClass: truenas-nfs
       accessMode: ReadWriteOnce
       size: 10Gi
+
+# NOTE: disable them first. after init then enable
+# https://github.com/nextcloud/helm/issues/259#issuecomment-1203159235
+cronjob:
+  enabled: false
+livenessProbe:
+  enabled: false
+readinessProbe:
+  enabled: false
+startupProbe:
+  enabled: false
