@@ -38,7 +38,7 @@ ingress:
 service:
   loadBalancerIP: 192.168.50.130
   annotations:
-    metallb.universe.tf/allow-shared-ip: pihole-svc
+    metallb.universe.tf/allow-shared-ip: nextcloud-svc
   type: LoadBalancer
 
 ## Resource limits
