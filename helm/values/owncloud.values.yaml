@@ -1,0 +1,12 @@
+persistence:
+  owncloud:
+    storageClassName: truenas-nfs
+
+ingress:
+  enabled: true
+  className: nginx-internal
+  annotations:
+    kubernetes.io/ingress.class: nginx-internal
+  labels:
+    hosts:
+      - "owncloud.home"
