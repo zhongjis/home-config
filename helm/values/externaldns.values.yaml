@@ -1,3 +1,7 @@
+global:
+  security:
+    allowInsecureImages: true
+
 provider: pihole
 policy: upsert-only
 txtOwnerId: "homelab"
@@ -14,3 +18,5 @@ serviceAccount:
   name: "external-dns"
 ingressClassFilters:
   - nginx-internal
+
+logLevel: debug

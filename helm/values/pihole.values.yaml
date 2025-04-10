@@ -2,7 +2,6 @@
 DNS1: 192.168.50.1
 persistentVolumeClaim:
   enabled: true
-  storageClassName: truenas-nfs
 
 ingress:
   enabled: true
@@ -29,4 +28,4 @@ replicaCount: 1
 # 2024.02.0 and after is having issue to work with external dns
 # ISSUE PR: https://github.com/kubernetes-sigs/external-dns/pull/5226
 image:
-  tag: 2024.07.0
+  tag: 2025.03.0

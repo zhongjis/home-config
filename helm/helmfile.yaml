@@ -11,8 +11,6 @@ repositories:
     url: https://democratic-csi.github.io/charts/
   - name: nextcloud
     url: https://nextcloud.github.io/helm/
-  - name: owncloud
-    url: https://owncloud-docker.github.io/helm-charts
 ---
 releases:
   # Load balancer
@@ -33,7 +31,7 @@ releases:
   - name: pihole
     namespace: pihole-system
     chart: mojo2600/pihole
-    version: 2.18.0
+    version: 2.29.1
     values:
       - ./values/pihole.values.yaml
 
@@ -41,7 +39,7 @@ releases:
   - name: externaldns-pihole
     namespace: pihole-system
     chart: bitnami/external-dns
-    version: 8.0.1
+    version: 8.7.11
     values:
       - ./values/externaldns.values.yaml
 
@@ -57,6 +55,7 @@ releases:
     namespace: nextcloud
     chart: nextcloud/nextcloud
     version: 6.6.9
+    installed: false
     values:
       - ./values/nextcloud.values.yaml
     needs:
