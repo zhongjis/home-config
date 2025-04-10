@@ -2,6 +2,8 @@
 DNS1: 192.168.50.1
 persistentVolumeClaim:
   enabled: true
+  storageClassName: truenas-nfs
+  subPath: pihole
 
 ingress:
   enabled: true
