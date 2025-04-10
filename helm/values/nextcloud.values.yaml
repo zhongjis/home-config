@@ -5,12 +5,13 @@ nextcloud:
   password: admin-password
   update: 0
   datadir: /var/www/html/data
+  subPath: nextcloud
 
 image:
-  flavor: fpm
-  tag: 31.0.2-fpm-alpine
+  # flavor: fpm
+  # tag: 31.0.2-fpm-alpine
   # NOTE: set after working
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 ## Persistence configuration
 persistence:
@@ -18,13 +19,13 @@ persistence:
   # existingClaim: ""
   storageClass: truenas-nfs
   accessMode: ReadWriteMany
-  size: 495Gi
+  size: 256Gi
 
   nextcloudData:
     enabled: true
     storageClass: truenas-nfs
     accessMode: ReadWriteMany
-    size: 5Gi
+    size: 6Gi
 
 ## Ingress configuration
 ingress:
@@ -61,7 +62,7 @@ mariadb:
       enabled: true
       storageClass: truenas-nfs
       accessMode: ReadWriteOnce
-      size: 10Gi
+      size: 8Gi
 # NOTE: uncomment after first setup.
 # https://github.com/nextcloud/helm/issues/259#issuecomment-1203159235
 # cronjob:
@@ -72,4 +73,3 @@ mariadb:
 #   enabled: false
 startupProbe:
   enabled: true
-  failureThreshold: 60
