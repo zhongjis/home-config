@@ -70,5 +70,6 @@ mariadb:
 #   enabled: false
 # readinessProbe:
 #   enabled: false
-# startupProbe:
-#   enabled: false
+startupProbe:
+  enabled: true
+  failureThreshold: 60
