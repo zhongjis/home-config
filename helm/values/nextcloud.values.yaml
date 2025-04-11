@@ -16,13 +16,11 @@ persistence:
   # existingClaim: ""
   storageClass: truenas-nfs
   size: 256Gi
-  existingClaim: pvc-50e20755-d156-4617-ba18-986f8bb1f2b3
 
   nextcloudData:
     enabled: true
     storageClass: truenas-nfs
     size: 6Gi
-    existingClaim: pvc-06850b84-6fe2-45dd-adf8-6ec7fec6fcaa
 
 ## Ingress configuration
 ingress:
@@ -34,7 +32,7 @@ ingress:
     kubernetes.io/ingress.class: nginx-internal
 
 service:
-  loadBalancerIP: 192.168.50.130
+  loadBalancerIP: 192.168.50.131
   annotations:
     metallb.universe.tf/allow-shared-ip: nextcloud-svc
   type: LoadBalancer
@@ -65,9 +63,9 @@ service:
 # https://github.com/nextcloud/helm/issues/259#issuecomment-1203159235
 # cronjob:
 #   enabled: false
-livenessProbe:
-  enabled: false
-readinessProbe:
-  enabled: false
-startupProbe:
-  enabled: true
+# livenessProbe:
+#   enabled: false
+# readinessProbe:
+#   enabled: false
+# startupProbe:
+#   enabled: false
