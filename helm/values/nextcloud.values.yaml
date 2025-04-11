@@ -2,13 +2,10 @@
 nextcloud:
   host: nextcloud.home
   username: admin
-  password: admin-password
-  update: 0
-  datadir: /var/www/html/data
-  subPath: nextcloud
+  password: admin
 
 image:
-  # flavor: fpm
+  flavor: fpm
   # tag: 31.0.2-fpm-alpine
   # NOTE: set after working
   pullPolicy: Always
@@ -18,16 +15,14 @@ persistence:
   enabled: true
   # existingClaim: ""
   storageClass: truenas-nfs
-  accessMode: ReadWriteMany
   size: 256Gi
-  existingClaim: pvc-646cfcad-cb8e-4bea-ba83-46d28a451cb3
+  existingClaim: pvc-50e20755-d156-4617-ba18-986f8bb1f2b3
 
   nextcloudData:
     enabled: true
     storageClass: truenas-nfs
-    accessMode: ReadWriteMany
     size: 6Gi
-    existingClaim: pvc-7fbcd21c-b6f1-4dce-b67f-3ef13467143b
+    existingClaim: pvc-06850b84-6fe2-45dd-adf8-6ec7fec6fcaa
 
 ## Ingress configuration
 ingress:
@@ -43,36 +38,36 @@ service:
   annotations:
     metallb.universe.tf/allow-shared-ip: nextcloud-svc
   type: LoadBalancer
-
 ## Resource limits
-resources:
-  limits:
-    cpu: 1000m
-    memory: 2Gi
-  requests:
-    cpu: 500m
-    memory: 512Mi
+# resources:
+#   limits:
+#     cpu: 1000m
+#     memory: 2Gi
+#   requests:
+#     cpu: 500m
+#     memory: 512Mi
 
 ## MariaDB configuration
-mariadb:
-  enabled: true
-  auth:
-    rootPassword: mariadb-root-password
-    password: mariadb-user-password
-  primary:
-    persistence:
-      enabled: true
-      storageClass: truenas-nfs
-      accessMode: ReadWriteOnce
-      size: 8Gi
-      existingClaim: pvc-6548907e-8284-47e5-b577-cf675f36953a
+# mariadb:
+#   enabled: true
+#   auth:
+#     rootPassword: mariadb-root-password
+#     password: mariadb-user-password
+#   primary:
+#     persistence:
+#       enabled: true
+#       storageClass: truenas-nfs
+#       accessMode: ReadWriteOnce
+#       size: 8Gi
+#       # existingClaim: pvc-6548907e-8284-47e5-b577-cf675f36953a
+#
 # NOTE: uncomment after first setup.
 # https://github.com/nextcloud/helm/issues/259#issuecomment-1203159235
 # cronjob:
 #   enabled: false
-# livenessProbe:
-#   enabled: false
-# readinessProbe:
-#   enabled: false
+livenessProbe:
+  enabled: false
+readinessProbe:
+  enabled: false
 startupProbe:
   enabled: true
