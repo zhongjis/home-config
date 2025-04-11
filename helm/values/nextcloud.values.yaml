@@ -20,21 +20,23 @@ persistence:
   storageClass: truenas-nfs
   accessMode: ReadWriteMany
   size: 256Gi
+  existingClaim: pvc-646cfcad-cb8e-4bea-ba83-46d28a451cb3
 
   nextcloudData:
     enabled: true
     storageClass: truenas-nfs
     accessMode: ReadWriteMany
     size: 6Gi
+    existingClaim: pvc-7fbcd21c-b6f1-4dce-b67f-3ef13467143b
 
 ## Ingress configuration
 ingress:
   enabled: true
   className: nginx-internal
-  annotations:
-    kubernetes.io/ingress.class: nginx-internal
   hosts:
     - "nextcloud.home"
+  annotations:
+    kubernetes.io/ingress.class: nginx-internal
 
 service:
   loadBalancerIP: 192.168.50.130
@@ -63,6 +65,7 @@ mariadb:
       storageClass: truenas-nfs
       accessMode: ReadWriteOnce
       size: 8Gi
+      existingClaim: pvc-6548907e-8284-47e5-b577-cf675f36953a
 # NOTE: uncomment after first setup.
 # https://github.com/nextcloud/helm/issues/259#issuecomment-1203159235
 # cronjob:
